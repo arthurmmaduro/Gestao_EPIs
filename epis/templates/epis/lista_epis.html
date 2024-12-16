@@ -1,0 +1,18 @@
+{% extends 'epis\base.html' %}
+{%  load static %}
+{% block content %}
+    <h1>Lista de EPIs</h1>
+    <ul>
+        {% for epi in epis %}
+            <li>
+                <strong>
+                    <a href="{% url 'detalhes_epi' epi.id %}">{{ epi.nome }}</a>
+                </strong> - {{ epi.numero_ca }}
+            </li>
+        {% empty %}
+            <li>Nenhum EPI cadastrado</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'cadastrar_epi' %}"><button>Cadastrar novo EPI</button></a></p>
+    <p><a href="{% url 'importar_excel' %}"><button>Importar Arquivos</button></a></p>
+{% endblock %}

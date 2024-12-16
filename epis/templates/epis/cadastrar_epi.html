@@ -1,0 +1,11 @@
+{% extends 'epis\base.html' %}
+{%  load static %}
+{% block content %}
+    <h1>Cadastrar EPI</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'lista_epis' %}">Voltar para a lista</a>
+    {% endblock %}

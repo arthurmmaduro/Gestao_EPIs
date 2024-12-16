@@ -1,0 +1,17 @@
+{% extends 'epis\base.html' %}
+{%  load static %}
+{% block content %}
+    <h1>Detalhes do EPI: {{ epi.nome }}</h1>
+    <p><strong>Modelo: </strong>{{ epi.modelo}}</p>
+    <p><strong>Fabricante: </strong>{{ epi.modelo}}</p>
+    <p><strong>Descrição: </strong>{{ epi.descricao}}</p>
+    <p><strong>Número do CA: </strong>
+        {% if epi.arquivo_ca %}
+            <a href="{{ epi.arquivo_ca.url }}" target="_blank">{{ epi.numero_ca }}</a>
+        {% else %}
+        {{ epi.numero_ca }}
+        {% endif %}
+    </p>
+    <p><strong>Validade do CA: </strong>{{ epi.validade_ca }}</p>
+    <a href="{% url 'lista_epis' %}">Voltar</a>
+    {% endblock %}

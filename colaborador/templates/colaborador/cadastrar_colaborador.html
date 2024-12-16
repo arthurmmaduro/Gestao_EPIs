@@ -1,0 +1,22 @@
+{% extends 'colaborador\base.html' %}
+{%  load static %}
+{% block content %}
+    <h1>Cadastrar Colaborador</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><button type="submit">Salvar</button></p>
+    </form>
+
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in fields.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><a href="{% url 'lista_colaborador' %}"><button>Voltar</button></a></p>
+{% endblock %}

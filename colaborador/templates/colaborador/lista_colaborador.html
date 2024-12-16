@@ -1,0 +1,19 @@
+{% extends 'colaborador\base.html' %}
+{%  load static %}
+{% block content %}
+    <h1>Lista de Colaboradores</h1>
+    <ul>
+        {% for colaborador in colaboradores %}
+            <li>
+                <strong>
+                    <a href="{% url 'detalhes_colaborador' colaborador.id %}">{{ colaborador.nome }}</a>
+                </strong>
+            </li>
+        {% empty %}
+            <li>Nenhum colaborador encontrado</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'exportar_relatorio_colaboradores_epis' %}"><button>Exportar</button></a></p>
+    <p><a href="{% url 'cadastrar_colaborador' %}"><button>Cadastrar novo colaborador</button></a></p>
+    
+{% endblock  %}

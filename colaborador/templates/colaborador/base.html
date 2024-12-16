@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'style/base.css' %}">
+    <title>SG - EPI</title>
+</head>
+
+<body>
+    <header class="menu-superior">
+        <div class="menu-container">
+            <div class="menu-user">
+                {% if user.is_authenticated %}
+                    <span>{{ colaborador.nome }}</span>
+                {% endif %}
+            </div>
+            <div class="menu-links">
+                <a href="{% url 'home' %}">Home</a>                
+                <form method="post" action="{% url 'logout' %}" style="display: none;">
+                    {% csrf_token %}
+                    <button type="submit" id="logout-button"></button>
+                </form>
+                <a href="#" onclick="document.getElementById('logout-button').click();">Sair</a>
+            </div>
+        </div>
+    </header>
+    <main class="conteudo-principal">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="rodape">
+        <p>&copy; 2024 Sistema de Gestão de EPIs</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'style/home.css' %}">
+    <title>Sistema de Gestão</title>
+</head>
+<body>
+    <div class="container-grid">
+        <header class="header">
+            <div class="menu-container">
+                <img src="" alt="" class="header-logo">
+                <div class="menu-user">
+                    {% if user.is_authenticated %}
+                        <span>{{ colaborador.nome }}</span>
+                    {% endif %}
+                </div>
+                <div class="menu-links">
+                    <a href="{% url 'home' %}">Home</a>                
+                    <form method="post" action="{% url 'logout' %}" style="display: none;">
+                        {% csrf_token %}
+                        <button type="submit" id="logout-button"></button>
+                    </form>
+                    <a href="#" onclick="document.getElementById('logout-button').click();">Sair</a>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="container-menu">
+                <p>Escolha uma das opções abaixo para navegar:</p>
+                <nav class="menu">
+                    <a href="{% url 'lista_colaborador' %}" class="menu-button">Colaboradores</a>
+                    <a href="{% url 'lista_epis' %}" class="menu-button">EPIs</a>
+                </nav>                </div>
+            <div class="cor">
+                <h1>Bem-vindo ao Sistema de Gestão</h1>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2024 Sistema de Gestão de EPIs</p>
+        </footer>
+    </div>
+</body>
+</html>

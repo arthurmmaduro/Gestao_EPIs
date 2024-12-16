@@ -1,0 +1,34 @@
+{% extends 'colaborador\base.html' %}
+{%  load static %}
+{% block content %}
+    <h1>Colaborador: {{ colaborador.nome }}</h1>
+    <p><strong>CPF: </strong>{{ colaborador.cpf }}</p>
+    <p><strong>Data de nascimento: </strong>{{ colaborador.data_nascimento }}</p>
+    <p><strong>Cargo: </strong>{{ colaborador.cargo }}</p>
+    <p><strong>E-mail: </strong>{{ colaborador.email }}</p>
+    <p><strong>Telefone: </strong>
+        {% if colaborador.telefone %}
+            ({{ colaborador.telefone|slice:":2" }}) {{ colaborador.telefone|slice:"2:7" }}-{{colaborador.telefone|slice:"7:"}}
+        {% else %}
+            Não informado
+        {% endif %}
+    </p>
+
+    <h2>EPIs Recomendados</h2>
+    <ul>
+        {% for epi in colaborador.epis.all %}
+        <li>{{ epi.nome }}</li>
+        {% empty %}
+        <li>Nenhum EPI recomendado</li>
+        {% endfor %}
+    </ul>
+    <p>
+        <a href="{% url 'lista_colaborador' %}"><button>Voltar</button></a>
+    </p>
+    <p>
+        <a href="{% url 'editar_colaborador' colaborador.id %}"><button>Editar</button></a>
+    </p>
+    <p>
+        <a href="{% url 'ficha_entrega' colaborador.id %}" class="btn btn-primary"><button>Gerar Ficha de EPIs</button></a>
+    </p>
+{% endblock %}
