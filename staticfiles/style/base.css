@@ -1,0 +1,46 @@
+.menu-superior {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-links a {
+    text-decoration: none;
+    margin-right: 15px;
+    color: #007bff;
+}
+
+.menu-links a:hover {
+    text-decoration: underline;
+}
+
+.menu-user span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.menu-user a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.menu-user a:hover {
+    text-decoration: underline
+}
+
+.conteudo-principal {
+    padding: 20px;
+}
+
+.rodape {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
